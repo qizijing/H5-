@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+	
+        window.addEventListener('load', eventWindowLoaded, false);
+        function eventWindowLoaded() {
+            canvasApp();
+        }
+
+        // function canvasApp() {
+
+        //     var theCanvas = document.getElementById('canvas');
+        //     var context = theCanvas.getContext('2d');
+        //     context.lineWidth = 5;
+        //     context.strokeStyle = "blue";
+
+        //     context.save();
+        //     context.beginPath();
+          
+        //     context.arc(100, 100, 50,Math.PI/2,0);//默认是顺时针,
+        //     context.stroke();
+        //     context.restore();
+
+        //     context.save();
+        //     context.strokeStyle = '#ff00ff';//设置描边颜色
+        //     context.beginPath();
+        //     context.moveTo(100, 200);
+        //     context.arcTo(300, 200, 300, 300, 100);
+            
+            
+        //     context.stroke();
+          
+        //     context.closePath();
+        //     context.restore();
+            
+         function canvasApp() {
+            var theCanvas = document.getElementById('canvas');
+            var context = theCanvas.getContext('2d');
+            context.save();
+            context.fillStyle="green"
+            context.translate(50,50);
+            context.rotate(5 * Math.PI / 180);
+            context.fillRect(0,0,50,50);
+            context.restore();
+           //  linearGradient();
+           //  radialGradient();
+          	// function linearGradient() {
+           //      var gr = context.createLinearGradient(200, 250, 300, 250);
+           //      context.lineWidth = 6;
+           //      gr.addColorStop(0, 'orange');
+           //      gr.addColorStop(0.5, 'red');
+           //      gr.addColorStop(1, 'green');
+
+           //      // Use the gradient for the fillStyle.
+           //       context.strokeStyle = gr;
+                 // context.strokeRect(200, 200, 100, 100);
+
+                // var gr = context.createLinearGradient(200, 200, 300, 300);
+                // gr.addColorStop(0, 'rgb(255,0,0)');
+                // gr.addColorStop(1, 'rgb(0,255,0)');
+                // context.fillStyle = gr;
+                // context.fillRect(200 + 20, 200 + 20, 100 - 40, 100 - 40);
+                // context.strokeRect(200, 300, 50, 100);
+                // context.strokeRect(200, 400, 200, 100);
+            // }  
+        }
+	</script>
+</head>
+<body>
+	<div>
+        <canvas id="canvas" width="500" height="500" style="border:solid #ccc 2px">
+            Your browser does not support the HTML 5 Canvas.
+        </canvas>
+    </div>
+</body>
+</html>

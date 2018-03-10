@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>canvas</title>
+</head>
+
+<body>
+<canvas id="canvas" width="400px" height="400px" style="border:1px black solid"></canvas>
+</body>
+<script type="text/javascript">
+		var canvas=document.getElementById('canvas');
+		var ctx=canvas.getContext('2d');
+
+		//01
+		/*ctx.fillStyle="#FF0000";//设置描边颜色
+		ctx.fillRect(1,1,150,150);
+
+		ctx.fillStyle="black"
+		ctx.font="20px Sans-Serif";
+		ctx.fillText("hello world",2,100);*/
+
+		//02
+		/*ctx.fillStyle="orange";
+		ctx.save();
+		ctx.fillStyle="red";
+		ctx.fillRect(0,0,100,100);
+		ctx.restore();
+		//save 和restore是红色矩形。第一句和最后一句绘制的橘色矩形，橘色矩形从坐标为50，50开始绘制。如果注释save，两个矩形都是红色。注释restore，两个矩形都是红色。
+		ctx.fillRect(50,50,100,100);*/
+
+		//03
+		/*ctx.moveTo(100,100);
+		ctx.lineTo(150,150);
+		ctx.lineWidth=1;
+		ctx.strokeStyle="red";//这四句话是状态设置
+
+		ctx.stroke();//绘制*/
+
+		//04
+		//如果没有第二个beginPath，两个三角形都是红色的。第一个可有可无
+		//ctx.beginPath();
+		/*ctx.strokeStyle = 'rgb(0,0,255)';
+        ctx.lineWidth = 5;
+        ctx.moveTo(10,10);
+        ctx.lineTo(200,10);
+        ctx.lineTo(200,120);
+        ctx.closePath();//closePath的意思不是结束路径，而是关闭路径，它会试图从（MoveTo点之后）当前路径的终点连一条路径到起点，让整个路径闭合起来。closePath和beginPath不是一对。
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.strokeStyle="red";
+        ctx.lineWidth=5;
+        ctx.moveTo(100,100);
+        ctx.lineTo(200,200);
+        ctx.lineTo(200,320);
+        ctx.closePath();
+        ctx.stroke();*/
+
+        //05弧形绘制
+        ctx.lineWidth=3;
+        ctx.strokeStyle="orange";
+
+        ctx.beginPath();
+        ctx.arc(100,100,50,Math.PI/2,0);//默认是顺时针,即默认anticlockwise为false
+        ctx.stroke();
+        ctx.restore();
+
+        ctx.save();//Canvas只能有一个“当前”路径，当调用save()方法时，不会将它存储为当前绘图状态的一部分
+        ctx.strokeStyle = '#ff00ff';
+        ctx.beginPath();//虽然调用了save和restore，但不会将当前路径存储为状态的一部分，所以若不beginPath描边依然覆盖
+        ctx.moveTo(100, 200);
+        ctx.arcTo(200, 200, 300, 300, 90);
+            
+        // context.arc(100, 100, 50, 0, Math.PI / 2, true);
+        ctx.stroke();
+        //context.fill();
+        ctx.closePath();
+        ctx.restore();
+</script>
+</html>
